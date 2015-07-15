@@ -3,5 +3,5 @@ rm -f *.class
 javac JMinusMinus.java
 java JMinusMinus $1
 javac J.java
-java J
+java J ${*:2}
 rm -f *.class
