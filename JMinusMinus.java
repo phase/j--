@@ -8,28 +8,35 @@ import java.util.*;
 
 public class JMinusMinus {
 
+    static HashMap<String, String> replacements = new HashMap<String, String>(){{
+        put("fn", "public static");
+        put("str", "String");
+        put("dub", "double");
+        put("fpn", "float");
+        put("vd", "void");
+        put("echo", "System.out.println");
+        put("^^", "!=");
+        put("nw", "new");
+        put("map", "HashMap");
+    }};
+
+
     public static void main(String[] a){
         String file = a[0];
         StringBuilder jCode = new StringBuilder();
         jCode.append("import java.io.*;import java.net.*;import java.lang.*;import java.math.*;import java.util.*;");
         jCode.append("public class J{");
         String b = readFile(file);
-        b = replaceAll(b, "fn", "public static");
-        b = replaceAll(b, "str", "String");
-        b = replaceAll(b, "dub", "double");
-        b = replaceAll(b, "fpn", "float");
-        b = replaceAll(b, "nop", "void");
-        b = replaceAll(b, "dub", "double");
-        b = replaceAll(b, "echo", "System.out.println");
-        b = replaceAll(b, "^^", "!=");
-        b = replaceAll(b, "nw", "new");
+        for(String s : replacements.keySet()){
+            b = replaceAll(b, s, replacements.get(s));
+        }
         jcode.append(b);
         jCode.append("}//Bracket for class");
         writeFile("J.java", jCode.toString());
     }
 
     public static String replaceAll(String source, String from, String to){
-        return source.replaceAll(from + "(?![^"]*"(?:[^"]*"[^"]*")*[^"]*$)", " " + to + " ");
+        return source.replaceAll("(" + from + ")(?![^"]*"(?:[^"]*"[^"]*")*[^"]*$)", " " + to + " ");
     }
 
     public static String readFile(String path) throws IOException {
