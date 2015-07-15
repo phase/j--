@@ -9,6 +9,7 @@ import java.util.*;
 public class JMinusMinus {
 
     static HashMap<String, String> replacements = new HashMap<String, String>(){{
+        put("main", "public static void main");
         put("fn", "public static");
         put("str", "String");
         put("dub", "double");
@@ -22,9 +23,9 @@ public class JMinusMinus {
 
     static ArrayList<String> functions = new ArrayList<String>(){{
         add("public static int fac(int n){int f=1;for(int i=1;i<=n;i++){f*=i;}return f;}"); //factorial function
-        add("public static final double GR = (1+Math.sqrt(5))/2;") //golden ratio used for other functions
+        add("public static final double GR = (1+sqrt(5))/2;") //golden ratio used for other functions
         add("public static int fibo(int n){" +
-            "return (Math.pow(GR,n) - Math.pow(-GR, -n))/Math.sqrt(5);}"); //get nth fibonacci number
+            "return (pow(GR,n) - pow(-GR, -n))/sqrt(5);}"); //get nth fibonacci number
         add("public static String input(){Scanner s=new Scanner(System.in);" +
             "String a=s.nextLine();s.close();return a;}"); //get string input from stdin
     }};
@@ -32,7 +33,7 @@ public class JMinusMinus {
     public static void main(String[] a){
         String file = a[0];
         StringBuilder jCode = new StringBuilder();
-        jCode.append("import java.io.*;import java.net.*;import java.lang.*;import java.math.*;import java.util.*;");
+        jCode.append("import java.io.*;import java.net.*;import java.lang.*;import java.math.*;import static java.math.Math.*;import java.util.*;");
         jCode.append("public class J{");
         for(String s : functions){
             jCode.append(s);
@@ -42,7 +43,7 @@ public class JMinusMinus {
             b = replaceAll(b, s, replacements.get(s));
         }
         jcode.append(b);
-        jCode.append("}//Bracket for class");
+        jCode.append("}//");
         writeFile("J.java", jCode.toString());
     }
 
