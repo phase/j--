@@ -14,9 +14,22 @@ public class JMinusMinus {
         jCode.append("import java.io.*;import java.net.*;import java.lang.*;import java.math.*;import java.util.*;");
         jCode.append("public class J{");
         String b = readFile(file);
-
+        b = replaceAll(b, "fn", "public static");
+        b = replaceAll(b, "str", "String");
+        b = replaceAll(b, "dub", "double");
+        b = replaceAll(b, "fpn", "float");
+        b = replaceAll(b, "nop", "void");
+        b = replaceAll(b, "dub", "double");
+        b = replaceAll(b, "echo", "System.out.println");
+        b = replaceAll(b, "^^", "!=");
+        b = replaceAll(b, "nw", "new");
+        jcode.append(b);
         jCode.append("}//Bracket for class");
         writeFile("J.java", jCode.toString());
+    }
+
+    public static String replaceAll(String source, String from, String to){
+        return source.replaceAll(from + "(?![^"]*"(?:[^"]*"[^"]*")*[^"]*$)", " " + to + " ");
     }
 
     public static String readFile(String path) throws IOException {
