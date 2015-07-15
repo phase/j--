@@ -9,6 +9,9 @@ import java.util.*;
 public class JMinusMinus {
 
     static HashMap<String, String> replacements = new HashMap<String, String>(){{
+        put("@f", "for");
+        put("@w", "while");
+        put("@i", "if");
         put("main", "public static void main(String[]a)");
         put("fn", "public static");
         put("str", "String");
