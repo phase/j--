@@ -25,6 +25,8 @@ public class JMinusMinus {
         add("public static final double GR = (1+Math.sqrt(5))/2;") //golden ratio used for other functions
         add("public static int fibo(int n){" +
             "return (Math.pow(GR,n) - Math.pow(-GR, -n))/Math.sqrt(5);}"); //get nth fibonacci number
+        add("public static String input(){Scanner s=new Scanner(System.in);" +
+            "String a=s.nextLine();s.close();return a;}"); //get string input from stdin
     }};
 
     public static void main(String[] a){
