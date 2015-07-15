@@ -20,12 +20,21 @@ public class JMinusMinus {
         put("map", "HashMap");
     }};
 
+    static ArrayList<String> functions = new ArrayList<String>(){{
+        add("public static int fac(int n){int f=1;for(int i=1;i<=n;i++){f*=i;}return f;}"); //factorial function
+        add("public static final double GR = (1+Math.sqrt(5))/2;") //golden ratio used for other functions
+        add("public static int fibo(int n){" +
+            "return (Math.pow(GR,n) - Math.pow(-GR, -n))/Math.sqrt(5);}"); //get nth fibonacci number
+    }};
 
     public static void main(String[] a){
         String file = a[0];
         StringBuilder jCode = new StringBuilder();
         jCode.append("import java.io.*;import java.net.*;import java.lang.*;import java.math.*;import java.util.*;");
         jCode.append("public class J{");
+        for(String s : functions){
+            jCode.append(s);
+        }
         String b = readFile(file);
         for(String s : replacements.keySet()){
             b = replaceAll(b, s, replacements.get(s));
