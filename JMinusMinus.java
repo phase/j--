@@ -19,6 +19,9 @@ public class JMinusMinus {
         put("^^", "!=");
         put("nw", "new");
         put("map", "HashMap");
+        put("lg", "long");
+        put("subs", "substring");
+        put("cut", "split");
     }};
 
     static ArrayList<String> functions = new ArrayList<String>(){{
